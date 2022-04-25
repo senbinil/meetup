@@ -14,7 +14,7 @@ const HomePage = (props) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const client = await MongoClient.connect(
     "mongodb+srv://logger:logger23206@cluster0.dfjfn.mongodb.net/meetups?retryWrites=true&w=majority"
   );
@@ -33,7 +33,6 @@ export async function getStaticProps() {
         description: meet.data.description,
       })),
     },
-    revalidate: 1,
   };
   client.close();
 }
